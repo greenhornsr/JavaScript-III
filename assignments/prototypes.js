@@ -16,14 +16,14 @@
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 function GameObject(gLevelAtt){
-  this.newCreatedAt = gLevelAtt.createdAt,
-  this.newName = gLevelAtt.name,
-  this.newDimensions = gLevelAtt.dimensions
-  console.log(this)
+  this.createdAt = gLevelAtt.createdAt,
+  this.name = gLevelAtt.name,
+  this.dimensions = gLevelAtt.dimensions,
+  console.log(this);
   }
 
   GameObject.prototype.destroy = function(){
-    return `${this.newName} was removed from the game.`
+    return `${this.name} was removed from the game.`
   }
 
 
@@ -35,14 +35,17 @@ function GameObject(gLevelAtt){
 */
 function CharacterStats(charStats){
   GameObject.call(this, charStats),
-  this.newHealthPoints = charStats.healthPoints
+  // GameObject.bind(this, charStats),
+  this.healthPoints = charStats.healthPoints
 }
 
+CharacterStats.prototype = Object.create(GameObject.prototype);
+
 CharacterStats.prototype.takeDamage = function(){
-  return `<object name> took damage.`
+  return `${this.name} took damage.`
 };
 
-CharacterStats.prototype = Object.create(GameObject.prototype);
+
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -55,18 +58,17 @@ CharacterStats.prototype = Object.create(GameObject.prototype);
 */
  
 function Humanoid(mortalAtt){
-  CharacterStats.call(this,mortalAtt),
-  this.newTeam = mortalAtt.team,
-  this.newWeapons = mortalAtt.weapons,
-  this.newLanguage = mortalAtt.language
+  CharacterStats.call(this, mortalAtt),
+  // CharacterStats.bind(this, mortalAtt),
+  this.team = mortalAtt.team,
+  this.weapons = mortalAtt.weapons,
+  this.language = mortalAtt.language
 }
 
-Humanoid.prototype.greet = function(){
-  return `<object name> offers a greeting in <object language>.`
-};
-
 Humanoid.prototype = Object.create(CharacterStats.prototype);
-
+Humanoid.prototype.greet = function(){
+  return `${this.name} offers a greeting in ${this.language}.`
+};
 
 
 /*

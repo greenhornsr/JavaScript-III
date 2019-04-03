@@ -42,12 +42,12 @@ function AnimalConstructor(attributes){
     this.newFavFood = attributes.favFood
 }
 
-// const cheetah = new AnimalConstructor({
-//     type: "Cheetah",
-//     age: "3",
-//     environment: "Safari",
-//     favFood: "Springbok"
-// })
+const cheetah = new AnimalConstructor({
+    type: "Cheetah",
+    age: "3",
+    environment: "Safari",
+    favFood: "Antelope"
+})
 
 const leopard = new AnimalConstructor({
     type: "Leopard",
@@ -57,7 +57,7 @@ const leopard = new AnimalConstructor({
 })
 
 // console.log(cheetah);
-console.log(leopard);
+// console.log(leopard);
 
 
 // Principle 4
@@ -65,12 +65,13 @@ console.log(leopard);
 // code example for Explicit Binding
 
 const hoofstock = ["gazelle", "impala", "deer", "wildebeast"];
+const antelope = ["springbok", "steenbok", "Thomson's gazelle", "duiker"];
 
 function favFoodToEat(hsfood1, hsfood2, hsfood3, hsfood4){
-    console.log(`${this.type} enjoy the tasty delicacies in ${hsfood1}, ${hsfood2}, ${hsfood3}, ${hsfood4}! `);
+    console.log(`${this.newType} enjoy the tasty delicacies in ${hsfood1}, ${hsfood2}, ${hsfood3}, ${hsfood4}! `);
 }
 
 console.log(favFoodToEat.call(leopard, ...hoofstock));
-// console.log(favFoodToEat.apply(this, leopard, hoofstock));
-// const favFoodMessage = favFoodToEat.bind(leopard, ...hoofstock);
-
+console.log(favFoodToEat.apply(leopard, hoofstock));
+const favFoodMessage = favFoodToEat.bind(cheetah, ...antelope);
+console.log(favFoodMessage())
