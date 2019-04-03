@@ -74,4 +74,4 @@ function favFoodToEat(hsfood1, hsfood2, hsfood3, hsfood4){
 console.log(favFoodToEat.call(leopard, ...hoofstock));
 console.log(favFoodToEat.apply(leopard, hoofstock));
 const favFoodMessage = favFoodToEat.bind(cheetah, ...antelope);
-console.log(favFoodMessage())
+console.log(favFoodMessage());

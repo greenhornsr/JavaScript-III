@@ -144,5 +144,54 @@ Humanoid.prototype.greet = function(){
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+  function Hero(heroAtt){
+    Humanoid.call(this, heroAtt);
+    this.defAttack = heroAtt.defAttack;
+    this.defAttackDmg = heroAtt.defAttackDmg
+  }
+  const guardian = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 3,
+      width: 3,
+      height: 5,
+    },
+    healthPoints: 45,
+    name: 'Big Boss',
+    team: 'Platinum Guard',
+    weapons: [
+      'Diamond Blade',
+      'Platinum Shield'
+    ],
+    language: 'Mumble',
+    defAttack: 'Explosive Guard',
+    defAttackDmg: 7,
+  });
+
+  function Villain(villAtt){
+    Humanoid.call(this, villAtt);
+    this.defAttack = villAtt.defAttack;
+    this.defAttackDmg = villAtt.defAttackDmg
+  }
+
+  const peasant = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 3,
+      width: 3,
+      height: 5,
+    },
+    healthPoints: 45,
+    name: 'Terror',
+    team: 'Gutterclass',
+    weapons: [
+      'Pitchfork',
+    ],
+    language: 'Screech',
+    defAttack: 'Lung',
+    defAttackDmg: 3,
+  });
+
+
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
